@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SABOR FULLSTACK</title>
+    <title>treino_saep</title>
+   
 </head>
 <body>
-    
+    <main>
+        <header>
+    <h1>USUÁRIOS</h1>
+    </header>
+
+    <hr />
+
+     <section>
+            <h2>Clique no Botão para Listar os Usuários</h2>
+            <button id="btn-listar">Listar</button>
+            <div id="lista"></div>
+        </section>
+
+    <h2>Cadastrar Usuário</h2>
+
+    <form>
+         <input id="nomePost" placeholder="Nome" />  <!--"input = caixa de texto" -->
+        <input id="emailPost" placeholder="Idade" />
+        <button id="btnPost">Cadastrar</button>
+    </form>
+
+    <hr />
+
+    <h2>Atualizar Usuário</h2>
+        <input id="nomePut" placeholder="Nome" />  
+        <input id="emailPut" placeholder="Idade" />
+        <button id="btnPut">Atualizar</button>
+
+        <section>
+         <h2>Apagar Usuário</h2>
+        <input id="deletar-id" placeholder="id">
+        <button id="btn-apagar" class="danger">Apagar</button>
+        </section>
+
+    </main> 
+    <script src="script.js" defer></script>
 </body>
 </html>
