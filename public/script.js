@@ -1,21 +1,46 @@
-const bntlistar = document.getElementById('bnt-listar');
-const bntPost = document.getElementById('bntpost');
-const bntPut = document.getElementById('bntput-');
-const bntapagar = document.getElementById('bnt-apagar');
+const btnlistar = document.getElementById('btn-listar');
+const btnPost = document.getElementById('btnPost');
+const btnPut = document.getElementById('btnPut');
+const btnapagar = document.getElementById('btn-apagar');
 
-bntlistar.addEventListener('click', async () => {
+btnlistar.addEventListener('click', async (req, res) => {
     const response = await fetch('http://localhost:3000/usuarios');
-   const data = response.json();
-   document.getElementById('lista').textContent = JSON.stringify(data, null, 2);
-})
+    const data = await response.json();
+    document.getElementById('lista').textContent = JSON.stringify(data, null, 2);
+});
 
-bntPost.addEventListener('click', async () => {
+btnPost.addEventListener('click', async (req, res) => {
     const response = await fetch('http://localhost:3000/usuarios', {
     method:'POST',
-    headers: { 'Content-Type': 'application/json'},
+    headers: { 'Content-Type':'Application/json'},
     body: JSON.stringify({
-        nome: document.getElementById('card-nome').value, 
-        idade: document.getElementById('card-idade')
+        nome: document.getElementById('nomePost').value, 
+        idade: document.getElementById('idadePost').value
     })
-}
-)})
+})
+    const data = await response.json();
+    console.log(data)
+}); 
+
+btnPut.addEventListener('click', async (req, res) => {
+    const id = document.getElementById('atualizar-id').value
+    const response = await fetch(`http://localhost:3000/usuarios/${id}`, {
+    method: 'PUT', 
+    headers: {'Content-Type':'Application/json'},
+    body: JSON.stringify({
+        nome: document.getElementById('nomePut').value, 
+        idade: document.getElementById('idadePut').value
+    })
+    });
+    const data = await response.json()
+        console.log(data)
+}); 
+
+btnapagar.addEventListener('click', async (req, res)=> {
+    const id = document.getElementById('deletar-id').value 
+    const resposta = await fetch(`http://localhost:3000/usuarios/${id}`, {
+        method: 'DELETE'
+    })
+    const deleteusuario = resposta.json()
+    console.log("Usuário Deletado")
+});

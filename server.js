@@ -1,16 +1,18 @@
 import cors from "cors"; 
 import express from "express"; 
-import pool from "./db.js"; 
+import pool from "./src/db.js"; 
 
 const port = 3000
 const app = express()
 
 app.use(express.json());
-app.use(cors()) 
+app.use(cors());
+app.use(express.static('public'))
+
 
 app.get('/usuarios', async (req, res) => {
-    const usuarios = await pool.query('SELECT * FROM usuarios') 
-    res.json(usuarios.rows)
+    const usuarios = await pool.query('SELECT * FROM usuarios'); 
+    res.json(usuarios.rows);
 })
 
 app.post('/usuarios', async (req, res) => {
